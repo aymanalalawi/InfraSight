@@ -13,7 +13,8 @@ infrasight/
 │   ├── streetlight_yolo/
 │   │   └── weights/
 │   │       └── best.pt              ← YOLOv8 detection weights
-│   └── condition_classifier_final.h5  ← MobileNetV2 scene classifier
+│   ├── condition_classifier_final.h5  ← MobileNetV2 scene classifier
+│   └── InitialClassifier.h5  ← Original previously used classifier
 │
 ├── utils/                           ← Shared logic (importable from all pages)
 │   ├── __init__.py                  ← Re-exports everything
@@ -33,14 +34,14 @@ infrasight/
 
 ## Models
 
-The application replaces the original `InitialClassifier.h5` with a **dual-output pipeline**:
+The application replaces the previous original `InitialClassifier.h5` with a **dual-output pipeline**:
 
 | Model | Task | Output |
 |---|---|---|
 | **YOLOv8n** (`best.pt`) | Detect streetlights in frame | Bounding boxes + `Light_On` / `Light_Off` |
 | **MobileNetV2** (`.h5`) | Classify scene lighting | `Daylight` / `Twilight` / `Night` |
 
-Train both models using the provided notebook (`streetlight_fault_detection.ipynb`), then copy the outputs here:
+Trained both models using the provided notebook (`streetlight_fault_detection.ipynb`), then copy the outputs here:
 
 ```bash
 # After training:
