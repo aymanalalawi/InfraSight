@@ -12,9 +12,9 @@ infrasight/
 ├── models/                          ← Trained model weights (git-ignored)
 │   ├── streetlight_yolo/
 │   │   └── weights/
-│   │       └── best.pt              ← YOLOv8 detection weights
-│   ├── condition_classifier_final.h5  ← MobileNetV2 scene classifier
-│   └── InitialClassifier.h5  ← Original previously used classifier
+│   │       └── best.pt                  ← YOLOv8 detection weights
+│   ├── condition_classifier_final.h5    ← MobileNetV2 scene classifier
+│   └── InitialClassifier.h5             ← Original previously used classifier
 │
 ├── utils/                           ← Shared logic (importable from all pages)
 │   ├── __init__.py                  ← Re-exports everything
