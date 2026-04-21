@@ -32,7 +32,7 @@ infrasight/
 ```
 
 ---
-## 📦 Dataset  
+## Dataset  
   
 ### Data Sources  
   
