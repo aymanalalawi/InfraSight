@@ -32,7 +32,7 @@ infrasight/
 ```
 
 ---
-## 📦 Dataset  
+## Dataset  
   
 ### Data Sources  
   
@@ -60,7 +60,7 @@ This is the **main dataset used for training**, where:
 - `Daylight`  
 - `Twilight`  
 - `Night`
-![](assets%5Cfigures%5Cdataset_distribution.png)
+![](assets/figures/dataset_distribution.png)
 ---
 
 ## Models
