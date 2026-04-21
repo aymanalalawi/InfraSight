@@ -1,6 +1,6 @@
 streamlit>=1.35.0
 hydralit-components>=1.0.10
-tensorflow>=2.13.0
+tensorflow==2.15.0
 torch>=2.0.0
 torchvision>=0.15.0
 ultralytics>=8.0.0
