@@ -1,3 +1,4 @@
+
 # InfraSight AI — Streetlight Fault Detection System
 
 A dual-model Streamlit application for automated streetlight inspection.
@@ -31,6 +32,36 @@ infrasight/
 ```
 
 ---
+## 📦 Dataset  
+  
+### Data Sources  
+  
+This project uses a **custom unified dataset** built by combining multiple sources:  
+  
+#### 1. Public Datasets  
+- [Street Light Dataset (Team16Project)](https://github.com/Team16Project/Street-Light-Dataset/tree/main)  
+- [Street Light Dataset (Roboflow Universe)](https://universe.roboflow.com/saran-iv253/street-light-ci0on-3nyqr?utm_source)  
+  
+These datasets provided:  
+- Streetlight images under different lighting conditions  
+- Initial annotations for lamp states and environments  
+  
+
+  
+#### 2. Custom Dataset (Primary)  
+  
+- [Street Light 2 (Roboflow Project)](https://app.roboflow.com/aymans-workplace/street-light-2/)  
+  
+This is the **main dataset used for training**, where:  
+  
+- Images from all sources were **merged**  
+- Annotations were **manually verified and corrected**  
+- Lighting conditions were **re-labeled using tags**:  
+- `Daylight`  
+- `Twilight`  
+- `Night`
+
+---
 
 ## Models
 
@@ -41,13 +72,9 @@ The application replaces the previous original `InitialClassifier.h5` with a **d
 | **YOLOv8n** (`best.pt`) | Detect streetlights in frame | Bounding boxes + `Light_On` / `Light_Off` |
 | **MobileNetV2** (`.h5`) | Classify scene lighting | `Daylight` / `Twilight` / `Night` |
 
-Trained both models using the provided notebook (`streetlight_fault_detection.ipynb`), then copy the outputs here:
+Trained both models using the provided notebook ([`streetlight_fault_detection.ipynb`](https://github.com/aymanalalawi/InfraSight/blob/main/notebooks/streetlight_fault_detection.ipynb)).
 
-```bash
-# After training:
-cp runs/streetlight_yolo/weights/best.pt          models/streetlight_yolo/weights/best.pt
-cp /content/condition_classifier_final.h5         models/condition_classifier_final.h5
-```
+---
 
 ---
 
