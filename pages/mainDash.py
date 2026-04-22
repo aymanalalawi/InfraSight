@@ -326,19 +326,19 @@ elif op == "Submit Entry":
     # =====================
     if entry_mode == "Manual Entry":
  
-        with st.form("manual_entry_form"):
+        with st.container():
             st.markdown("#### 📋 Inspection Details")
- 
+
             lat, lon    = lat_lon_inputs("manual")
             lighting    = st.selectbox("Lighting Condition", ["Daylight", "Twilight", "Night"])
             light_label = st.selectbox("Light Status",       ["Light_On", "Light_Off"])
             status      = "faulty" if light_label == "Light_Off" else "serviceable"
- 
+
             st.info(f"Derived fault status: **{status}**")
- 
+
             st.markdown("#### 🕐 Timestamp")
             time_mode = st.radio("Time source", ["Use current time", "Pick manually"],
-                                 horizontal=True)
+                                    horizontal=True)
             if time_mode == "Use current time":
                 timestamp = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
                 st.caption(f"Will be recorded as: **{timestamp}**")
@@ -352,9 +352,9 @@ elif op == "Submit Entry":
                 timestamp = datetime.datetime.combine(
                     picked_date, picked_time
                 ).strftime("%d/%m/%Y %H:%M:%S")
- 
-            submitted = st.form_submit_button("Submit Entry", type="primary")
- 
+
+            submitted = st.button("Submit Entry", type="primary")
+
         if submitted:
             submit_entry({
                 "lat"        : lat,
