@@ -17,7 +17,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import cv2
 import pandas as pd
 import streamlit as st
-import hydralit_components as hc
+from streamlit_option_menu import option_menu
 from datetime import datetime
 
 from utils import (
@@ -44,16 +44,9 @@ data_df = load_logs()
 
 
 # NAVIGATION
-option_data = [
-    {"icon": "bi bi-cpu-fill",      "label": "Automated"},
-    {"icon": "bi bi-pencil-square", "label": "Manual Entry"},
-]
-
-op = hc.option_bar(
-    option_definition=option_data,
-    key="MobileOption",
-    horizontal_orientation=True,
-)
+op = option_menu(None, ["Automated", "Manual Entry"], 
+    icons=['bi bi-cpu-fill', 'bi bi-pencil-square'], 
+    menu_icon="cast", default_index=0, orientation="horizontal")
 
 
 # SESSION STATE INIT

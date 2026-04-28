@@ -24,7 +24,7 @@ import pandas as pd
 import plotly.express as px
 import pydeck as pdk
 import streamlit as st
-import hydralit_components as hc
+from streamlit_option_menu import option_menu
 from PIL import Image
 
 from utils import (
@@ -51,15 +51,9 @@ clf_model  = load_condition_classifier()
 
 
 # NAVIGATION
-option_data = [
-    {"icon": "bi bi-info-circle-fill", "label": "Overview"},
-    {"icon": "bi bi-file-earmark-plus-fill","label": "Submit Entry"},
-    {"icon": "fa fa-database",          "label": "Inspection Logs"},
-]
-
-op = hc.option_bar(
-    option_definition=option_data, key="PrimaryOption", horizontal_orientation=True
-)
+op = option_menu(None, ["Overview", "Submit Entry", "Inspection Logs"], 
+    icons=['bi bi-info-circle-fill', 'bi bi-file-earmark-plus-fill', "bi bi-database-fill"], 
+    menu_icon="cast", default_index=0, orientation="horizontal")
 
 
 # LOAD DATA
@@ -261,14 +255,9 @@ elif op == "Submit Entry":
     st.subheader("Add Inspection Entry")
  
     
-    entry_mode = hc.option_bar(
-        option_definition=[
-            {"icon": "bi bi-pencil-fill", "label": "Manual Entry"},
-            {"icon": "bi bi-cpu-fill",    "label": "AI Prediction"},
-        ],
-        key="ManualEntryMode",
-        horizontal_orientation=False,
-    )
+    entry_mode = option_menu(None, ["Manual Entry", "AI Prediction"], 
+        icons=['bi bi-pencil-fill', 'bi bi-cpu-fill'], 
+        default_index=0, orientation="horizontal", )
  
     
     # SHARED HELPERS
